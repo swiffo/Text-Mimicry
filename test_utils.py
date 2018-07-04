@@ -6,7 +6,7 @@ import utils
 
 class TestUtils(unittest.TestCase):
     def test_add_from_test(self):
-        text = 'It was an itsy-biddy, teeny-weenie'
+        text = 'It was an itsy-bitsy, teeny-weenie'
         word_length = 4
         t = utils.add_from_text(text, word_length)
 
