@@ -1,12 +1,12 @@
 # Text-Mimicry
 
 Have you ever wondered what sort of text you could randomly generate using the frequencies 
-of letter combinations in Shakespearen plays? If not, please take a moment to wonder as the
+of letter combinations in plays by Shakespeare? If not, please take a moment to wonder as the
 rest of the text assumes that you have ...
 
 Wonder no more!
 
-In the following we read 3 Shakespearen plays, counting and storing all N-letter combinations occuring.
+In the following we read 3 plays by Shakespeare, counting and storing all N-letter combinations occuring.
 We then generate a random text by first choosing an N-letter combination with each combination having 
 a probability of being chosen proportional to the number of times in occurred in the plays. We then extend 
 this inductively by taking the last N-1 letters of our random text, and choosing the next letter with
