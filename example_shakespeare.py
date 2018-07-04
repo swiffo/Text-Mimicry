@@ -8,11 +8,10 @@ def speak_Shakespearean():
         'http://www.gutenberg.org/cache/epub/2243/pg2243.txt'  # Merchant of Venice
     ]
 
-    wlengths = [3, 10]
-    for word_length in wlengths:
+    for word_length in [3, 5, 10]:
         print('*** WORD LENGTH {}'.format(word_length))
         trie = utils.add_from_gutenberg(shakespeare_urls, word_length)
-        text = trie.random_text(word_length, 300)
+        text = trie.random_text(word_length, 500)
 
         try:
             possible_start_index = text.index('. ')
