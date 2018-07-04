@@ -41,6 +41,10 @@ class Trie:
         """Returns the count of words added to the trie.
 
         Note that duplicates are counted.
+
+        Returns:
+            The count of words added to the trie with duplicates counted
+            their multiplicity.
         """
         return sum(self._counts)
 
