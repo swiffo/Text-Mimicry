@@ -1,9 +1,10 @@
 import re
+
 import requests
 
 import Trie
 
-GUTENBERG_END = 'End of the Project Gutenberg EBook'
+_GUTENBERG_END = 'End of the Project Gutenberg EBook'
 
 def add_from_text(text, word_length, trie=None):
     '''Add all substrings from text with length word_length to the trie.
@@ -27,7 +28,7 @@ def clean_gutenberg_txt(raw_text):
 
     start_index = raw_text.index('. ', 10000) + 2  # No error handling!!
     try:
-        end_index = raw_text.index(GUTENBERG_END, start_index)
+        end_index = raw_text.index(_GUTENBERG_END, start_index)
     except ValueError:
         end_index = None
 
@@ -46,18 +47,17 @@ def add_from_gutenberg(urls, word_length, trie=None):
 
     If no trie is specified, create an empty one first.
 
-    :param urls:
-    :param word_length:
-    :param trie:
+    :param urls: URLs of Gutenberg text files.
+    :param word_length: The length of words to be added to the trie.
+    :param trie: The trie to add words to. Optional. If not specified, a fresh one will
+    be created.
     :return: Trie
     '''
     if trie is None:
         trie = Trie.Trie()
 
     for url in urls:
-        print(url)
         response = requests.get(url)
-        print('!!!! length = {}'.format(len(response.text)))
         text = clean_gutenberg_txt(response.text)
         trie.feed_text(text, word_length)
 
