@@ -36,7 +36,7 @@ class Trie:
         '''Number of words that exist in the trie'''
         return sum(self._counts)
 
-    def random_word(self, word_length, prefix = ''):
+    def random_word(self, word_length, prefix=''):
         '''Return a random word from the prefix tree of specified length.
 
         Optionally specify a prefix to limit the selection space. Probability of a word being
