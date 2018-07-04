@@ -7,10 +7,18 @@ import Trie
 _GUTENBERG_END = 'End of the Project Gutenberg EBook'
 
 def add_from_text(text, word_length, trie=None):
-    '''Add all substrings from text with length word_length to the trie.
+    """Adds all substrings of text with specified length to a trie.
 
     If no trie is specified, an empty one is first created.
-    '''
+
+    Args:
+        text: A string from which the words to add to the trie are formed.
+        word_length: Integer specifying length of the substrings of text.
+        trie: A trie (Trie.Trie). Optional. If not specified an empty one is created.
+
+    Returns:
+        A trie (Trie.Trie).
+    """
     if trie is None:
         trie = Trie.Trie()
 
@@ -19,10 +27,17 @@ def add_from_text(text, word_length, trie=None):
     return trie
 
 def clean_gutenberg_txt(raw_text):
-    '''
-    Remove pre- and post-amble from Gutenberg texts and convert carriage returns
-    into single whitespace.
-    '''
+    """Cleans text string from Gutenberg project.
+
+    Takes a Project Gutenberg text as string and attempts removing pre- and post-amble.
+    Also converts line breaks into whitespace.
+
+    Args:
+        raw_text: Full text (string) of a Project Gutenberg book.
+
+    Returns:
+         A string.
+    """
     if len(raw_text) < 11000:
         return ''
 
@@ -42,17 +57,19 @@ def clean_gutenberg_txt(raw_text):
 
 
 def add_from_gutenberg(urls, word_length, trie=None):
-    '''
-    Add all substring from the Gutenberg text of length word_length to the trie.
+    """Adds substrings from Project Gutenberg text to a trie.
 
-    If no trie is specified, create an empty one first.
+    Takes URLs for a Project Gutenberg book and adds all substrings of length
+    word_length from those texts to a trie. If no trie is supplied, a new one is created.
 
-    :param urls: URLs of Gutenberg text files.
-    :param word_length: The length of words to be added to the trie.
-    :param trie: The trie to add words to. Optional. If not specified, a fresh one will
-    be created.
-    :return: Trie
-    '''
+    Args:
+        urls: A list of URLs to Project Gutenberg text files.
+        word_length: Integer specifying the length of the substrings to add to the trie.
+        trie: Optional. A trie (Trie.Trie). If not supplied, an empty trie will be created.
+
+    Returns:
+        A trie (Trie.Trie).
+    """
     if trie is None:
         trie = Trie.Trie()
 
