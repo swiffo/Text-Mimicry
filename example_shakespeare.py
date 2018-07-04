@@ -13,13 +13,16 @@ def speak_Shakespearean():
         trie = utils.add_from_gutenberg(shakespeare_urls, word_length)
         text = trie.random_text(word_length, 500)
 
+        # If there is a sentence start (anything following '. ') close to the beginning
+        # of the generated random text, we cut the text before that.
+        sentence_start_marker = '. '
         try:
-            possible_start_index = text.index('. ')
+            possible_start_index = text.index(sentence_start_marker)
         except ValueError:
             possible_start_index = None
 
         if possible_start_index is not None and possible_start_index < 100:
-            text = text[possible_start_index + 2:]
+            text = text[possible_start_index + len(sentence_start_marker):]
 
         print(text)
 
